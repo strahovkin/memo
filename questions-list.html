@@ -1,59 +1,60 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        <!-- Required meta tags -->
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-        <title>Template</title>
-        <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase.js"></script>
-        <script src="scripts/firebase-functions.js"></script>
-        <script src="scripts/auth-functions.js"></script>
-        <script src="scripts/users-functions.js"></script>
-        <script type="text/javascript">
-        window.onload = function() {
-            //initFirebase();
-        }
-        </script>
-    </head>
-    <body>
-        <a href="index.html">Home</a>
-        
-        <div class="container">
-            <!-- Content here -->
-            <h1>Questions list</h1>
-        <!-- Show a list of recent posts
-        <section class="mdl-grid content" id="recent-posts-list" style="display:none">
-        -->
-        <section class="mdl-grid content" id="recent-posts-list">
-          <div class="card-columns posts-container mdl-cell mdl-cell--12-col mdl-grid">
-          </div>
-        </section>
-        <!-- Show the list of user's posts
-        <section class="mdl-grid content" id="user-posts-list" style="display:none">
-        -->
-        <section class="mdl-grid content" id="user-posts-list">
-          <div class="card-group posts-container mdl-cell mdl-cell--12-col mdl-grid">
-          </div>
-        </section>
-        <!-- Show the list of top user's posts 
-        <section class="mdl-grid content" id="top-user-posts-list" style="display:none">
-        -->
-        <section class="mdl-grid content" id="top-user-posts-list">
-          <div class="card-deck posts-container mdl-cell mdl-cell--12-col mdl-grid">
-          </div>
-        </section>
 
-        </div>
-        <!-- Optional JavaScript -->
-        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-        <script src="scripts/questions-functions.js"></script>
-        <script type="text/javascript">
-            fetchQuestions();
-        </script>
-    </body>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <title>Template</title>
+    <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase.js"></script>
+    <script src="scripts/firebase-functions.js"></script>
+    <script src="scripts/auth-functions.js"></script>
+    <script src="scripts/users-functions.js"></script>
+    <script type="text/javascript">
+    window.onload = function() {
+        //initFirebase();
+    }
+    </script>
+</head>
+
+<body>
+    <a href="index.html">Home</a>
+    <div class="container">
+        <!-- Content here -->
+        <h1>Questions list</h1>
+        <!-- Show a list of recent memos
+        <section class="mdl-grid content" id="recent-memos-list" style="display:none">
+        -->
+        <section class="mdl-grid content" id="recent-memos-list">
+            <div class="card-columns memos-container mdl-cell mdl-cell--12-col mdl-grid">
+            </div>
+        </section>
+        <!-- Show the list of user's memos
+        <section class="mdl-grid content" id="user-memos-list" style="display:none">
+        -->
+        <section class="mdl-grid content" id="user-memos-list">
+            <div class="card-group memos-container mdl-cell mdl-cell--12-col mdl-grid">
+            </div>
+        </section>
+        <!-- Show the list of top user's memos 
+        <section class="mdl-grid content" id="top-user-memos-list" style="display:none">
+        -->
+        <section class="mdl-grid content" id="top-user-memos-list">
+            <div class="card-deck memos-container mdl-cell mdl-cell--12-col mdl-grid">
+            </div>
+        </section>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="scripts/questions-functions.js"></script>
+    <script type="text/javascript">
+    fetchQuestions();
+    </script>
+</body>
+
 </html>
