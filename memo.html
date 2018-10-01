@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <title>New Question</title>
+    <title>New Memo</title>
     <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase.js"></script>
     <script src="scripts/firebase-functions.js"></script>
     <script type="text/javascript">
@@ -21,26 +21,26 @@
     <a href="index.html">Home</a>
     <div class="container">
         <!-- Content here -->
-        <h1>Question</h1>
-        <form id="message-form" action="#">
+        <h1>Memo</h1>
+        <form id="memoForm" action="#">
             <div class="form-group">
-                <label for="new-memo-title">Question content...</label>
-                <input type="text" class="form-control" id="new-memo-title" aria-describedby="emailHelp" placeholder="Enter question content">
+                <label for="new-memo-title">Memo title</label>
+                <input type="text" class="form-control" id="new-memo-title" aria-describedby="emailHelp" placeholder="Enter memo content">
                 <small id="contentHelp" class="form-text text-muted">We'll never share content with anyone else.</small>
             </div>
             <div class="form-group">
-                <label for="new-memo-message">Question answer...</label>
-                <textarea class="form-control" id="new-memo-message" rows="3" placeholder="Enter question answer"></textarea>
-                <small id="answerHelp" class="form-text text-muted">We'll never share answer with anyone else.</small>
+                <label for="new-memo-content">Memo content</label>
+                <textarea class="form-control" id="new-memo-content" rows="3" placeholder="Enter memo content"></textarea>
+                <small id="contentHelp" class="form-text text-muted">We'll never share content with anyone else.</small>
             </div>
             <div class="form-group form-check">
-                <input type="checkbox" class="form-check-input" id="questionIsActive">
-                <label class="form-check-label" for="questionIsActive">Is active?</label>
-                <small id="checkHelp" class="form-text text-muted">We'll never activate question with anyone else.</small>
+                <input type="checkbox" class="form-check-input" id="memoIsActive">
+                <label class="form-check-label" for="memoIsActive">Is active?</label>
+                <small id="checkHelp" class="form-text text-muted">We'll never activate memo with anyone else.</small>
             </div>
             <div class="form-group">
-                <label for="questionDifficultySelect">Select question difficulty</label>
-                <select class="form-control" id="questionDifficultySelect">
+                <label for="memoDifficultySelect">Select memo difficulty</label>
+                <select class="form-control" id="memoDifficultySelect">
                     <option>0</option>
                     <option>1</option>
                     <option>2</option>
@@ -55,8 +55,8 @@
                 <small id="selectHelp" class="form-text text-muted">We'll never select difficulty with anyone else.</small>
             </div>
             <div class="form-group">
-                <label for="questionTopicsSelect">Select question topics</label>
-                <select multiple class="form-control" id="questionTopicsSelect">
+                <label for="memoTopicsSelect">Select memo topics</label>
+                <select multiple class="form-control" id="memoTopicsSelect">
                     <option>algebra</option>
                     <option>chinese</option>
                     <option>english</option>
@@ -64,11 +64,11 @@
                     <option>literature</option>
                     <option>spain</option>
                 </select>
-                <small id="questionTopicsHelp" class="form-text text-muted">We'll never select topics with anyone else.</small>
+                <small id="memoTopicsHelp" class="form-text text-muted">We'll never select topics with anyone else.</small>
             </div>
             <div class="form-group">
-                <label for="questionRange">Range input</label>
-                <input type="range" class="form-control-range" id="questionRange">
+                <label for="memoRange">Range input</label>
+                <input type="range" class="form-control-range" id="memoRange">
                 <small id="rangeHelp" class="form-text text-muted">We'll never select range input with anyone else.</small>
             </div>
             <div class="form-group">
@@ -80,7 +80,7 @@
                 <span id="linkbox"></span>
             </div>
             <button type="submit" class="btn btn-primary">
-                Add question
+                Add memo
             </button>
         </form>
         </br>
@@ -90,7 +90,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-    <script src="scripts/question-functions.js"></script>
+    <script src="scripts/memo-functions.js"></script>
     <script type="text/javascript">
     uploadFile();
     </script>
