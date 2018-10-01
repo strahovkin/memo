@@ -7,10 +7,10 @@ function initFirebase() {
 
 		var config = {
     		apiKey: "AIzaSyDsROo9FA4DCDfGGDaeQaYgLtOJPza6ook",
-    		authDomain: "####.firebaseapp.com",
-    		databaseURL: "https://####.firebaseio.com",
-    		projectId: "####",
-    		storageBucket: "####.appspot.com",
+    		authDomain: "playmemorer.firebaseapp.com",
+    		databaseURL: "https://playmemorer.firebaseio.com",
+    		projectId: "playmemorer",
+    		storageBucket: "playmemorer.appspot.com",
     		messagingSenderId: "603526460252"
   		};
  		firebase.initializeApp(config);
