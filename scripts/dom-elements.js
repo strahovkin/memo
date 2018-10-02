@@ -6,7 +6,6 @@ var titleInput = document.getElementById('new-memo-title');
 var contentInput = document.getElementById('new-memo-content');
 
 var messageInput = document.getElementById('new-memo-content');
-var titleInput = document.getElementById('new-memo-title');
 
 var memoIsActiveInput = document.getElementById('memoIsActive');
 
@@ -23,6 +22,8 @@ var linkbox = document.getElementById('linkbox');
 var listeningFirebaseRefs = [];
 
 var splashPage = document.getElementById('page-splash');
+
+var topicMemosFetchButton = document.getElementById('topicMemosFetchButton');
 
 var recentMemosSection = document.getElementById('recent-memos-list');
 var userMemosSection = document.getElementById('user-memos-list');

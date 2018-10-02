@@ -7,16 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <title>Template</title>
+    <title>Topic Memos List</title>
     <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase.js"></script>
     <script src="scripts/dom-elements.js"></script>
     <script src="scripts/firebase-functions.js"></script>
-    <script src="scripts/auth-functions.js"></script>
-    <script src="scripts/users-functions.js"></script>
+    <script src="scripts/topic-memos-functions.js"></script>
     <script type="text/javascript">
         window.onload = function() {
-
-            document.getElementById('fetchMemosButton').addEventListener('click', fetchMemosFromTopic('history'), false);
 
         }
     </script>
@@ -25,27 +22,32 @@
 <body>
 <a href="index.html">Home</a>
 <div class="container">
-    <!-- Content here -->
     <h1>Memos list</h1>
-    <!-- Show a list of recent memos
+    <button class="btn btn-secondary" id="topicMemosFetchButton">Fetch</button>
+
+    <!-- Show the list of top user's memos
+<section class="mdl-grid content" id="top-user-memos-list" style="display:none">
+-->
+    <section class="mdl-grid content" id="topic-memos-list">
+        <div class="card-columns memos-container mdl-cell mdl-cell--12-col mdl-grid">
+        </div>
+    </section>
+
     <section class="mdl-grid content" id="recent-memos-list" style="display:none">
-    -->
-    <button class="btn btn-secondary" id="fetchMemosButton">Fetch</button>
-    <section class="mdl-grid content" id="recent-memos-list">
         <div class="card-columns memos-container mdl-cell mdl-cell--12-col mdl-grid">
         </div>
     </section>
     <!-- Show the list of user's memos
     <section class="mdl-grid content" id="user-memos-list" style="display:none">
     -->
-    <section class="mdl-grid content" id="user-memos-list">
+    <section class="mdl-grid content" id="user-memos-list" style="display:none">
         <div class="card-group memos-container mdl-cell mdl-cell--12-col mdl-grid">
         </div>
     </section>
     <!-- Show the list of top user's memos
     <section class="mdl-grid content" id="top-user-memos-list" style="display:none">
     -->
-    <section class="mdl-grid content" id="top-user-memos-list">
+    <section class="mdl-grid content" id="top-user-memos-list" style="display:none">
         <div class="card-deck memos-container mdl-cell mdl-cell--12-col mdl-grid">
         </div>
     </section>
@@ -57,8 +59,9 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 <script src="scripts/dom-elements.js"></script>
 <script src="scripts/memos-functions.js"></script>
+<script src="scripts/topic-memos-functions.js"></script>
 <script type="text/javascript">
-    fetchMemos();
+    startTopicMemosFunctions();
 </script>
 </body>
 

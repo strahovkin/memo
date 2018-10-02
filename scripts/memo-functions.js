@@ -33,14 +33,14 @@ function writeNewMemo(uid, username, picture, title, body) {
     var updates = {};
     updates['/memos/' + newMemoKey] = memoData;
     updates['/user-memos/' + uid + '/' + newMemoKey] = memoData;
-    console.log(updates);
+    //console.log(updates);
     topicsSelected.forEach(element => {
         var topicData = {};
         topicData[newMemoKey] = true;
         updates['/' + element + '/' + newMemoKey] = topicData;
-        console.log(element);
+        //console.log(element);
     });
-    console.log(updates);
+    //console.log(updates);
     return firebase.database().ref().update(updates);
 }
 // [END write_fan_out]
@@ -440,7 +440,7 @@ function uploadFile() {
 }
 
 
-function fetchMemos() {
+function startMemoFunctions() {
 
     initFirebase();
 }

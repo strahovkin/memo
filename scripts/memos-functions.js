@@ -1,8 +1,6 @@
 'use strict';
 
-
-function fetchMemos() {
-
+function startMemosFunctions() {
     initFirebase();
 }
 /**
@@ -64,8 +62,6 @@ function toggleStar(memoRef, uid) {
  * Creates a memo element.
  */
 function createMemoElement(memoId, title, text, author, authorId, authorPic) {
-
-    console.log('CREATE POST ELEMENT: ' + memoId);
 
     var uid = firebase.auth().currentUser.uid;
 
@@ -207,7 +203,7 @@ function createMemoElement(memoId, title, text, author, authorId, authorPic) {
  */
 function createCardElement(data) {
 
-
+    console.log('CREATE CARD ELEMENT');
     var uid = firebase.auth().currentUser.uid;
 
     var key = data.key;
@@ -230,7 +226,7 @@ function createCardElement(data) {
     var topics = data.val().topics;
     var userID = data.val().uid;
 
-    console.log('\nCREATE POST ELEMENT: ' + key);
+    //console.log('\nCREATE POST ELEMENT: ' + key);
 
     var list = '<ul class="list-group list-group-flush">'
 
@@ -279,11 +275,11 @@ function createCardElement(data) {
     */
 
     var cardTitle = cardElement.getElementsByClassName(titleClass)[0];
-    console.log(cardTitle);
+    //console.log(cardTitle);
     cardTitle.innerText = title;
 
     var cardContent = cardElement.getElementsByClassName(contentClass)[0];
-    console.log(cardContent);
+    //console.log(cardContent);
     cardContent.innerText = content;
 
 
@@ -350,6 +346,7 @@ function createCardElement(data) {
      unStar.onclick = onStarClicked;
      star.onclick = onStarClicked;
     */
+    console.log('CARD ELEMENT: ', cardElement);
     return cardElement;
 };
 
@@ -416,109 +413,16 @@ function deleteComment(memoElement, id) {
     comment.parentElement.removeChild(comment);
 };
 
-
-function fetchMemosFromTopic(topic) {
-
-    console.log('[START my_top_memos_query]');
-
-    var topicMemosIdsRef = firebase.database().ref(topic);
-
-    topicMemosIdsRef.limitToLast(100).once('value').then(function(snapshot) {
-        console.log(snapshot);
-
-        var username = (snapshot.val() && snapshot.val().username) || 'Anonymous';
-
-        var containerElement = sectionElement.getElementsByClassName('memos-container')[0];
-        //var memo = createMemoElement(data.key, data.val().title, data.val().body, author, data.val().uid, data.val().authorPic);
-
-        var card = createCardElement(data);
-
-        //   console.log('\nPOST: ');
-
-        console.log(card);
-
-        containerElement.insertBefore(card, containerElement.firstChild);
-
-        console.log(containerElement);
-
-
-
-    });
-
-    //return firebase.database().ref('/users/' + userId)
-
-    //var topUserMemosRef = firebase.database().ref('user-memos/' + myUserId).orderByChild('starCount');
-    // [END my_top_memos_query]
-    // [START recent_memos_query]
-    var recentMemosRef = firebase.database().ref('memos').limitToLast(100);
-    // [END recent_memos_query]
-    var userMemosRef = firebase.database().ref('user-memos/' + myUserId);
-
-    var fetchMemos = function(memosRef, sectionElement) {
-
-        console.log('FETCHED POSTS RESULT');
-
-        memosRef.on('child_added', function(data) {
-
-            console.log('FETCHED POSTS CHILD ADDED');
-
-            var author = data.val().author || 'Anonymous';
-            var containerElement = sectionElement.getElementsByClassName('memos-container')[0];
-            //var memo = createMemoElement(data.key, data.val().title, data.val().body, author, data.val().uid, data.val().authorPic);
-
-            var card = createCardElement(data);
-
-            //   console.log('\nPOST: ');
-
-            console.log(card);
-
-            containerElement.insertBefore(card, containerElement.firstChild);
-
-            console.log(containerElement);
-
-        });
-        memosRef.on('child_changed', function(data) {
-
-            console.log('FETCHED POSTS CHILD CHANGED');
-
-            var containerElement = sectionElement.getElementsByClassName('memos-container')[0];
-            var memoElement = containerElement.getElementsByClassName('memo-' + data.key)[0];
-            memoElement.getElementsByClassName('mdl-card__title-text')[0].innerText = data.val().title;
-            memoElement.getElementsByClassName('username')[0].innerText = data.val().author;
-            memoElement.getElementsByClassName('text')[0].innerText = data.val().body;
-            memoElement.getElementsByClassName('star-count')[0].innerText = data.val().starCount;
-        });
-        memosRef.on('child_removed', function(data) {
-
-            console.log('FETCHED POSTS CHILD REMOVED');
-
-            var containerElement = sectionElement.getElementsByClassName('memos-container')[0];
-            var memo = containerElement.getElementsByClassName('card' + data.key)[0];
-            memo.parentElement.removeChild(memo);
-        });
-    };
-
-    // Fetching and displaying all memos of each sections.
-    fetchMemos(topUserMemosRef, topUserMemosSection);
-    fetchMemos(recentMemosRef, recentMemosSection);
-    fetchMemos(userMemosRef, userMemosSection);
-
-    // Keep track of all Firebase refs we are listening to.
-    listeningFirebaseRefs.push(topUserMemosRef);
-    listeningFirebaseRefs.push(recentMemosRef);
-    listeningFirebaseRefs.push(userMemosRef);
-};
 /**
  * Starts listening for new memos and populates memos lists.
  */
 function startDatabaseQueries() {
-    // [START my_top_memos_query]
 
-    console.log('[START my_top_memos_query]');
+    console.log('[START DATABASE QUERIES]');
 
     var myUserId = firebase.auth().currentUser.uid;
     var topUserMemosRef = firebase.database().ref('user-memos/' + myUserId).orderByChild('starCount');
-    // [END my_top_memos_query]
+    // [END DATABASE QUERIES]
     // [START recent_memos_query]
     var recentMemosRef = firebase.database().ref('memos').limitToLast(100);
     // [END recent_memos_query]
@@ -526,11 +430,11 @@ function startDatabaseQueries() {
 
     var fetchMemos = function(memosRef, sectionElement) {
 
-        console.log('FETCHED POSTS RESULT');
+        //console.log('FETCHED POSTS RESULT');
 
         memosRef.on('child_added', function(data) {
 
-            console.log('FETCHED POSTS CHILD ADDED');
+            //console.log('FETCHED POSTS CHILD ADDED');
 
             var author = data.val().author || 'Anonymous';
             var containerElement = sectionElement.getElementsByClassName('memos-container')[0];
@@ -540,16 +444,16 @@ function startDatabaseQueries() {
 
             //   console.log('\nPOST: ');
 
-            console.log(card);
+            //console.log(card);
 
             containerElement.insertBefore(card, containerElement.firstChild);
 
-            console.log(containerElement);
+            //console.log(containerElement);
 
         });
         memosRef.on('child_changed', function(data) {
 
-            console.log('FETCHED POSTS CHILD CHANGED');
+            //console.log('FETCHED POSTS CHILD CHANGED');
 
             var containerElement = sectionElement.getElementsByClassName('memos-container')[0];
             var memoElement = containerElement.getElementsByClassName('memo-' + data.key)[0];
@@ -560,7 +464,7 @@ function startDatabaseQueries() {
         });
         memosRef.on('child_removed', function(data) {
 
-            console.log('FETCHED POSTS CHILD REMOVED');
+            //console.log('FETCHED POSTS CHILD REMOVED');
 
             var containerElement = sectionElement.getElementsByClassName('memos-container')[0];
             var memo = containerElement.getElementsByClassName('card' + data.key)[0];
@@ -577,20 +481,7 @@ function startDatabaseQueries() {
     listeningFirebaseRefs.push(topUserMemosRef);
     listeningFirebaseRefs.push(recentMemosRef);
     listeningFirebaseRefs.push(userMemosRef);
-};
-
-/**
- * Writes the user's data to the database.
- */
-// [START basic_write]
-function writeUserData(userId, name, email, imageUrl) {
-    firebase.database().ref('users/' + userId).set({
-        username: name,
-        email: email,
-        profile_picture: imageUrl
-    });
-};
-// [END basic_write]
+}
 
 /**
  * Cleanups the UI and removes all Firebase listeners.
@@ -606,36 +497,7 @@ function cleanupUi() {
         ref.off();
     });
     listeningFirebaseRefs = [];
-};
-
-/**
- * The ID of the currently signed-in User. We keep track of this to detect Auth state change events that are just
- * programmatic token refresh but not a User status change.
- */
-var currentUID;
-
-/**
- * Triggers every time there is a change in the Firebase auth state (i.e. user signed-in or user signed out).
- */
-function onAuthStateChanged(user) {
-    // We ignore token refresh events.
-    if (user && currentUID === user.uid) {
-        return;
-    }
-
-    cleanupUi();
-    if (user) {
-        currentUID = user.uid;
-        //splashPage.style.display = 'none';
-        writeUserData(user.uid, user.displayName, user.email, user.photoURL);
-        startDatabaseQueries();
-    } else {
-        // Set currentUID to null.
-        currentUID = null;
-        // Display the splash page where you can sign-in.
-        //splashPage.style.display = '';
-    }
-};
+}
 
 /**
  * Displays the given section element and changes styling of the given button.
@@ -668,9 +530,9 @@ function fetchMemos() {
     window.onload = function() {
         auth.onAuthStateChanged(function(user) {
             if (user) {
-                console.log('Anonymous user signed-in.', user);
+                //console.log('Anonymous user signed-in.', user);
             } else {
-                console.log('There was no anonymous session. Creating a new anonymous user.');
+                //console.log('There was no anonymous session. Creating a new anonymous user.');
                 // Sign the user in anonymously since accessing Storage requires the user to be authorized.
                 //auth.signInAnonymously().catch(function(error) {
                 //if (error.code === 'auth/operation-not-allowed') {
