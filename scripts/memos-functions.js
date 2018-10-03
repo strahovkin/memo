@@ -282,7 +282,6 @@ function createCardElement(data) {
     //console.log(cardContent);
     cardContent.innerText = content;
 
-
     /*
      // Set values.
      cardElement.getElementsByClassName('body')[0].innerText = body;
@@ -349,7 +348,6 @@ function createCardElement(data) {
     console.log('CARD ELEMENT: ', cardElement);
     return cardElement;
 };
-
 
 /**
  * Writes a new comment for the given memo.

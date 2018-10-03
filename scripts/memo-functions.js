@@ -6,6 +6,32 @@ var isActive = false;
 var range = 0;
 var topicsSelected = [];
 
+//function uidValue(data) = firebase.auth().currentUser.uid;
+
+function memoKey(data) { return data.key; }
+
+function memoAuthor(data) { return data.val().author; }
+
+function memoCardClass(data) { return 'card' +  memoKey(data) }
+
+function memoContent(data) { return data.val().body; }
+
+function memoContentClass(data) { return 'content' + memoKey(data); }
+
+function memoDifficulty(data) { return data.val().difficulty; }
+
+function memoFileURL(data) { return data.val().fileURL; }
+
+function memoIsActive(data) { return data.val().isActive; }
+
+function memoRange(data) { return data.val().range; }
+
+function memoTitle(data) { return data.val().title; }
+
+function memoTitleClass(data) { return 'title' + memoKey(data) }
+
+function memoTopics(data) { return data.val().topics; }
+
 /**
  * Saves a new memo to the Firebase DB.
  */
@@ -179,6 +205,61 @@ function createMemoElement(memoId, title, text, author, authorId, authorPic) {
     return memoElement;
 }
 
+function createMemoHTML(data) {
+/*
+    var memoId = memoObject['memoId'];
+    //var author = data.val().author;
+    var cardClass = 'card' + memoId;
+    var content = memoObject['fileURL'];
+    var contentClass = 'content' + memoId;
+    var difficulty = memoObject['difficulty'];
+    var fileURL = memoObject['fileURL'];
+    var isActive = memoObject['isActive'];
+    var range = memoObject['range'];
+    var title = memoObject['title'];
+    var titleClass = 'title' + memoId;
+    var topics = memoObject['topics'];
+*/
+    //var userID = data.val().uid;
+
+    //console.log('CREATE MEMO HTML');
+    //console.log(memoCardClass(data));
+    //console.log(memoFileURL(data));
+    //console.log(memoTitleClass(data));
+    //console.log(memoTitle(data));
+    //console.log(memoContentClass(data));
+    //console.log(memoContent(data));
+    //console.log(memoTopics(data));
+
+    var list = '<ul class="list-group list-group-flush">';
+
+    memoTopics(data).forEach(element => {
+        var li = '<li class="list-group-item">' + element + '</li>';
+        list = list + li;
+    });
+
+    list = list + '</ul>';
+
+    var html =
+        '<div class="card ' + memoCardClass(data) + ' text-center">' +
+        '<img class="card-img-top" src="' + memoFileURL(data) + '" alt="Card image cap">' +
+        '<div class="card-body">' +
+        '<h5 class="card-title">Идентификатор</h5>' +
+        '<p class="card-text">' + memoCardClass(data) + '</p>' +
+        '<h5 class="card-title">Вопрос</h5>' +
+        '<p class="card-text ' + memoTitleClass(data) + '">' + memoTitle(data) + '</p>' +
+        '<h5 class="card-title">Ответ</h5>' +
+        '<p class="card-text ' + memoContentClass(data) + '">' + memoContent(data) + '</p>' +
+        list + '</br>' +
+        '<a href="#" class="btn btn-primary">Выбрать</a>' + '</br>' +
+        '<a href="#" class="card-link">Подробно...</a>' +
+        '</div>' +
+        '</div>';
+
+    //console.log(html);
+
+    return html
+}
 /**
  * Writes a new comment for the given memo.
  */

@@ -5,32 +5,44 @@ function startTopicMemosFunctions() {
 }
 
 function fetchMemosFromTopic(topic) {
-    console.log('FETCH MEMOS FROM TOPIC');
+    //console.log('FETCH MEMOS FROM TOPIC');
     var memosRef = firebase.database().ref('memos');
     var topicMemosIdsRef = firebase.database().ref(topic);
-    console.log('TOPIC MEMOS REF TO STRING: ', topicMemosIdsRef.toString());
+    //console.log('TOPIC MEMOS REF TO STRING: ', topicMemosIdsRef.toString());
     var topicMemos = [];
     topicMemosIdsRef.limitToLast(100).once('value').then(function(snapshot) {
         var memosObject = snapshot.val();
-        console.log('MEMO OBJECT: ', memosObject);
+        //console.log('MEMO OBJECT: ', memosObject);
         for (var key in memosObject) {
             if (memosObject.hasOwnProperty(key)) {
                 topicMemos.push(key);
             }
             var memoRef = memosRef.child(key);
-            console.log('MEMO REF: ', memoRef.toString());
+            //console.log('MEMO REF: ', memoRef.toString());
             memoRef.once('value').then(function(snapshot) {
-                console.log('MEMO OBJECT VALUE: ', memosObject);
-                var data = snapshot.val();
-                console.log('MEMO REF SNAPSHOT VAL: ', data);
+                //console.log('MEMO OBJECT VALUE: ', memosObject);
+                //var data = snapshot.val();
+                //console.log('MEMO REF SNAPSHOT VAL: ', data);
                 var sectionElement = document.getElementById('topic-memos-list');
-                console.log('SECTION: ', sectionElement);
+                //console.log('SECTION: ', sectionElement);
                 var containerElement = sectionElement.getElementsByClassName('memos-container')[0];
-                console.log('CONTAINER: ', containerElement);
-                console.log('DATA: ', data);
+                //console.log('CONTAINER: ', containerElement);
+                //console.log('DATA: ', data);
+
+                /*
                 var card = createCardElement(snapshot);
                 console.log('CARD: ', card);
                 containerElement.insertBefore(card, containerElement.firstChild);
+                */
+
+                var cardHTML = createMemoHTML(snapshot);
+                //console.log('CARD HTML: ', cardHTML);
+                // Create the DOM element from the HTML.
+                var div = document.createElement('div');
+                div.innerHTML = cardHTML;
+                //console.log(div.innerHTML);
+                var cardElement = div.firstChild;
+                containerElement.insertBefore(cardElement, containerElement.firstChild);
             });
         };
     });
@@ -44,6 +56,9 @@ function fetchMemo(memosRef, sectionElement) {
         var containerElement = sectionElement.getElementsByClassName('memos-container')[0];
         //var memo = createMemoElement(data.key, data.val().title, data.val().body, author, data.val().uid, data.val().authorPic);
         var card = createCardElement(data);
+
+
+
         //   console.log('\nPOST: ');
         //console.log(card);
         containerElement.insertBefore(card, containerElement.firstChild);
@@ -71,7 +86,7 @@ function fetchMemo(memosRef, sectionElement) {
 }
 
 var handler = function buttonHandler() {
-    console.log('TOPIC MEMOS FETCH BUTTON CLICKED');
+    //console.log('TOPIC MEMOS FETCH BUTTON CLICKED');
     fetchMemosFromTopic('history');
 };
 
